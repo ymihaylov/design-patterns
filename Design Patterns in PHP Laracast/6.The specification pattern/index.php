@@ -1,14 +1,24 @@
-<?php
+ <?php
 
 require 'vendor/autoload.php';
 
 use Acme\Customer;
 use Acme\CustomerIsGold;
+use Acme\CustomersRepository;
 
+$customers = new CustomersRepository(
+    [
+        new Customer('gold'),
+        new Customer('silver'),
+        new Customer('bronze'),
+        new Customer('gold'),
+    ]
+);
 
-$customers = new CustomersRepository;
-$spec      = new CustomerIsGold;
-$customers->bySpecification($spec);
+// var_dump($customers->all());
+
+$spec    = new CustomerIsGold;
+$results = $customers->matchingSpecification(new CustomerIsGold);
 
 // $specification  = new CustomerIsGold;
 // $goldCustomer = new Customer('gold');
