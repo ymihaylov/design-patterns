@@ -15,8 +15,6 @@ $customers = new CustomersRepository(
     ]
 );
 
-// var_dump($customers->all());
-
 $spec    = new CustomerIsGold;
 $results = $customers->matchingSpecification(new CustomerIsGold);
 
